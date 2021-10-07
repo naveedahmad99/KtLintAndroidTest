@@ -51,8 +51,7 @@ jobs:
       - checkout
       - run:
           name: Run Lint
-          command: |
-            ./gradlew lintStaginDebug
+          command: ./gradlew lintStaginDebug
 #      - run:
 #      - ./gradlew lintStaginDebug
 #  build:
@@ -90,20 +89,20 @@ jobs:
       - store_artifacts:
           path: app/build/outputs/apk/release
 
-  ktlint:
-    stage: test
-    script:
-      - ./gradlew ktlint
-    artifacts:
-      paths:
-        - build/ktlint.xml
-      expire_in: 1 day
-    steps:
-      - checkout
-    executor:
-      name: android/android-machine
-      resource-class: xlarge
-    allow_failure: true
+#  ktlint:
+#    stage: test
+#    script:
+#      - ./gradlew ktlint
+#    artifacts:
+#      paths:
+#        - build/ktlint.xml
+#      expire_in: 1 day
+#    steps:
+#      - checkout
+#    executor:
+#      name: android/android-machine
+#      resource-class: xlarge
+#    allow_failure: true
 
 
 
@@ -137,7 +136,8 @@ workflows:
 
   test-lint:
     jobs:
-      - ktlint
+      - testing
+
 #      - github-super-linter/lint:
 #          scan-dir: app
 #          version: v3
