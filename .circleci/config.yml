@@ -32,6 +32,17 @@ jobs:
       - store_artifacts:
           path: ~/test-results/junit
 
+#  ktlint:
+#    stage: test
+#    script:
+#      - ./gradlew ktlint
+#    artifacts:
+#      paths:
+#        - build/ktlint.xml
+#      expire_in: 1 day
+#    allow_failure: true
+
+
   testing:
     executor:
       name: android/android-machine
@@ -79,6 +90,20 @@ jobs:
       - store_artifacts:
           path: app/build/outputs/apk/release
 
+  ktlint:
+    stage: test
+    script:
+      - ./gradlew ktlint
+    artifacts:
+      paths:
+        - build/ktlint.xml
+      expire_in: 1 day
+    steps:
+      - checkout
+    executor:
+      name: android/android-machine
+      resource-class: xlarge
+    allow_failure: true
 
 
 
@@ -112,7 +137,7 @@ workflows:
 
   test-lint:
     jobs:
-      - testing
+      - ktlint
 #      - github-super-linter/lint:
 #          scan-dir: app
 #          version: v3
