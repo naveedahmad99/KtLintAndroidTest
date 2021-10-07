@@ -31,6 +31,17 @@ jobs:
           path: ~/test-results
       - store_artifacts:
           path: ~/test-results/junit
+
+  testing:
+    executor:
+      name: android/android-machine
+      resource-class: xlarge
+    steps:
+      - name: Run Kotlin Linter
+      command: |
+          ./gradlew lintStaginDebug
+#      - run:
+#      - ./gradlew lintStaginDebug
 #  build:
 #    docker:
 #      - image: 'circleci/openjdk:11-jdk'
@@ -38,18 +49,18 @@ jobs:
 #      - checkout
 #      - sonarcloud/scan
 
-  check-lint:
-    executor:
-      name: android/android-machine
-      resource-class: xlarge
-    steps:
-      - checkout
-      - android/restore-gradle-cache
-      - android/restore-build-cache
-      - run:
-          name: Run Tests
-          command: |
-            ./gradlew lint test
+#  check-lint:
+#    executor:
+#      name: android/android-machine
+#      resource-class: xlarge
+#    steps:
+#      - checkout
+#      - android/restore-gradle-cache
+#      - android/restore-build-cache
+#      - run:
+#          name: Run Tests
+#          command: |
+#            ./gradlew lint test
 
   release-build:
     executor:
@@ -93,9 +104,13 @@ workflows:
 #    jobs:
 #      - release-build
 
-  lint-code:
+#  lint-code:
+#    jobs:
+#      - check-lint
+
+  test-lint:
     jobs:
-      - check-lint
+      - testing
 #      - github-super-linter/lint:
 #          scan-dir: app
 #          version: v3
