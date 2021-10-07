@@ -38,10 +38,10 @@ jobs:
       resource-class: xlarge
     steps:
       - checkout
-      run:
-        name: Run Lint
-        command: |
-          ./gradlew lintStaginDebug
+      - run:
+          name: Run Lint
+          command: |
+            ./gradlew lintStaginDebug
 #      - run:
 #      - ./gradlew lintStaginDebug
 #  build:
