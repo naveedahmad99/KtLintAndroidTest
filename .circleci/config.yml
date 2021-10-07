@@ -37,8 +37,10 @@ jobs:
       name: android/android-machine
       resource-class: xlarge
     steps:
-      - name: Run Kotlin Linter
-      command: |
+      - checkout
+      run:
+        name: Run Lint
+        command: |
           ./gradlew lintStaginDebug
 #      - run:
 #      - ./gradlew lintStaginDebug
