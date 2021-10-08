@@ -51,7 +51,7 @@ jobs:
       - checkout
       - run:
           name: Run Lint
-          command: ./gradlew ktlintDebugFormat
+          command: ./gradlew ktlintDebugCheck
 #      - run:
 #      - ./gradlew lintStaginDebug
 #  build:
