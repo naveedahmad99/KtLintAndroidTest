@@ -52,12 +52,12 @@ jobs:
       - run:
           name: Run Lint
           command: ./gradlew ktlintDebugCheck
-      - run:
-          name: Run Lint
-          command: ./gradlew ktlintCheck
-      - run:
-          name: Run Lint
-          command: ./gradlew ktlintReleaseCheck
+#      - run:
+#          name: Run Lint
+#          command: ./gradlew ktlintCheck
+#      - run:
+#          name: Run Lint
+#          command: ./gradlew ktlintReleaseCheck
 #      - run:
 #      - ./gradlew lintStaginDebug
 #  build:
