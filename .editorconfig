@@ -1,8 +1,8 @@
 # Comma-separated list of rules to disable (Since 0.34.0)
 # Note that rules in any ruleset other than the standard ruleset will need to be prefixed
 # by the ruleset identifier.
-disabled_rules=no-wildcard-imports,experimental:annotation,my-custom-ruleset:my-custom-rule
-
+# disabled_rules=no-wildcard-imports,experimental:annotation,my-custom-ruleset:my-custom-rule
+# disabled_rules=wildcard-imports
 # Defines the imports layout. The layout can be composed by the following symbols:
 # "*" - wildcard. There must be at least one entry of a single wildcard to match all other imports. Matches anything after a specified symbol/import as well.
 # "|" - blank line. Supports only single blank lines between imports. No blank line is allowed in the beginning or end of the layout.
@@ -20,7 +20,11 @@ ij_kotlin_imports_layout=* # alphabetical with capital letters before lower case
 ktlint_ignore_back_ticked_identifier=true
 
 [*.{kt,kts}]
-disabled_rules=import-ordering
+disabled_rules = import-ordering
+
+[*.{kt,kts}]
+disabled_rules = no-wildcard-imports
+
 
 # Note that in this case 'import-ordering' rule will be active and 'indent' will be disabled
 [api/*.{kt,kts}]
